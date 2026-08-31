@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Crosslet — Juego</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="game-wrapper">
+    <!-- ENCABEZADO DEL JUEGO -->
+    <header class="header">
+      <a href="index.html" class="icon-btn" aria-label="Volver">
+        <!-- icono volver integrado -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+
+      <div class="logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+        <span>CROSSLET</span>
+      </div>
+
+      <div style="display:flex; gap:4px;">
+        <button id="audioBtnGame" class="icon-btn" aria-label="Sonido" aria-pressed="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="4 9 8 9 12 5 12 19 8 15 4 15 4 9"></polygon>
+            <path id="audioWaveOn" d="M17 8a5 5 0 0 1 0 8"></path>
+            <path id="audioWaveOff" d="M17 9l4 4M21 9l-4 4" style="display:none"></path>
+          </svg>
+        </button>
+        <button id="helpBtnGame" class="icon-btn" aria-label="Ayuda">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+        <button id="statsBtnGame" class="icon-btn" aria-label="Estadísticas">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- TABLERO -->
+    <main class="main">
+      <div id="board" class="board">
+        <!-- FILA 1 -->
+        <div class="board-row" data-row="0">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+        <!-- FILA 2 -->
+        <div class="board-row" data-row="1">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+        <!-- FILA 3 -->
+        <div class="board-row" data-row="2">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+        <!-- FILA 4 -->
+        <div class="board-row" data-row="3">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+        <!-- FILA 5 -->
+        <div class="board-row" data-row="4">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+        <!-- FILA 6 -->
+        <div class="board-row" data-row="5">
+          <div class="board-tile" data-col="0"></div>
+          <div class="board-tile" data-col="1"></div>
+          <div class="board-tile" data-col="2"></div>
+          <div class="board-tile" data-col="3"></div>
+          <div class="board-tile" data-col="4"></div>
+        </div>
+      </div>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </main>
+
+    <!-- TECLADO COMPLETO -->
+    <section class="keyboard" id="keyboard">
+      <div class="kb-row">
+        <button class="key" data-key="Q">Q</button>
+        <button class="key" data-key="W">W</button>
+        <button class="key" data-key="E">E</button>
+        <button class="key" data-key="R">R</button>
+        <button class="key" data-key="T">T</button>
+        <button class="key" data-key="Y">Y</button>
+        <button class="key" data-key="U">U</button>
+        <button class="key" data-key="I">I</button>
+        <button class="key" data-key="O">O</button>
+        <button class="key" data-key="P">P</button>
+      </div>
+      <div class="kb-row">
+        <button class="key" data-key="A">A</button>
+        <button class="key" data-key="S">S</button>
+        <button class="key" data-key="D">D</button>
+        <button class="key" data-key="F">F</button>
+        <button class="key" data-key="G">G</button>
+        <button class="key" data-key="H">H</button>
+        <button class="key" data-key="J">J</button>
+        <button class="key" data-key="K">K</button>
+        <button class="key" data-key="L">L</button>
+        <button class="key" data-key="Ñ">Ñ</button>
+      </div>
+      <div class="kb-row">
+        <button class="key wide" data-key="ENTER">ENVIAR</button>
+        <button class="key" data-key="Z">Z</button>
+        <button class="key" data-key="X">X</button>
+        <button class="key" data-key="C">C</button>
+        <button class="key" data-key="V">V</button>
+        <button class="key" data-key="B">B</button>
+        <button class="key" data-key="N">N</button>
+        <button class="key" data-key="M">M</button>
+        <button class="key wide" data-key="BACKSPACE" aria-label="Borrar">
+          <!-- icono borrar integrado -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+            <line x1="18" y1="9" x2="12" y2="15"></line>
+            <line x1="12" y1="9" x2="18" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- VENTANA DE AYUDA -->
+    <div id="helpModalGame" class="modal hidden">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h2>Cómo jugar</h2>
+          <button class="icon-btn close-modal" data-close="helpModalGame">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; font-size:14px; line-height:1.5; ">
+          <p>Adivina la palabra en 6 intentos.</p>
+          <p>Cada intento debe ser una palabra válida de 5 letras. Pulsa ENVIAR para comprobarla.</p>
+          <p>Después de cada intento, los colores indican qué tan cerca estás.</p>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <div class="board-tile correct" style="width:36px; height:36px; font-size:16px; max-width:36px; max-height:36px;">W</div>
+            <span>La letra está en la posición correcta.</span>
+          </div>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <div class="board-tile present" style="width:36px; height:36px; font-size:16px; max-width:36px; max-height:36px;">O</div>
+            <span>La letra está en la palabra, pero en otra posición.</span>
+          </div>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <div class="board-tile absent" style="width:36px; height:36px; font-size:16px; max-width:36px; max-height:36px;">X</div>
+            <span>La letra no está en la palabra.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VENTANA DE SONIDO -->
+    <div id="audioModalGame" class="modal hidden">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h2>Sonido</h2>
+          <button class="icon-btn close-modal" data-close="audioModalGame" aria-label="Cerrar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:14px; font-weight:600;">Efectos de sonido</span>
+            <button id="toggleSoundsBtn" class="btn-secondary" style="width:auto; height:36px; padding:0 16px; font-size:11px;" aria-pressed="true">Activado</button>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:14px; font-weight:600;">Música</span>
+            <button id="toggleMusicBtn" class="btn-secondary" style="width:auto; height:36px; padding:0 16px; font-size:11px;" aria-pressed="true">Activada</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VENTANA DE ESTADÍSTICAS -->
+    <div id="statsModalGame" class="modal hidden">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h2>Estadísticas</h2>
+          <button class="icon-btn close-modal" data-close="statsModalGame">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div id="statsGrid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; text-align:center; margin-bottom:20px; ">
+          <div><div id="statPlayed" style="font-size:26px; font-weight:800;">0</div><div style="font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:#7a756d;">Jugadas</div></div>
+          <div><div id="statWin" style="font-size:26px; font-weight:800;">0</div><div style="font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:#7a756d;">% de victorias</div></div>
+          <div><div id="statStreak" style="font-size:26px; font-weight:800;">0</div><div style="font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:#7a756d;">Racha</div></div>
+          <div><div id="statMax" style="font-size:26px; font-weight:800;">0</div><div style="font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:#7a756d;">Máxima</div></div>
+        </div>
+        <h3 id="gameResult" style="text-align:center; font-size:16px; margin-bottom:12px;"></h3>
+        <p id="correctWord" style="text-align:center; font-size:13px; color:#7a756d; margin-bottom:16px;"></p>
+        <div style="display:flex; gap:10px;">
+          <button id="shareBtn" class="btn-primary" style="flex:1;">
+            <!-- icono compartir integrado -->
+            <span style="display:flex; align-items:center; justify-content:center; gap:6px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              Compartir
+            </span>
+          </button>
+          <button id="newGameBtn" class="btn-secondary" style="flex:1;">Nueva partida</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/offline.js"></script>
+  <script src="gameplay/game.js"></script>
+</body>
+</html>
