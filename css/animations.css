@@ -1,0 +1,255 @@
+/*
+  CROSSLET - animations.css
+  Solo animaciones funcionales
+  Sin neón, sin entrada de web pirata
+*/
+
+/* CUANDO ESCRIBES UNA LETRA */
+@keyframes tile-pop {
+  0% {
+    transform: scale(0.95);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.board-tile.pop {
+  animation-name: tile-pop;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* CUANDO VOLTEA PARA MOSTRAR COLOR */
+@keyframes tile-flip {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.board-tile.flip {
+  animation-name: tile-flip;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* RETRASOS PARA VOLTEO EN CASCADA */
+.board-tile.flip-delay-0 {
+  animation-delay: 0s;
+}
+
+.board-tile.flip-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.board-tile.flip-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.board-tile.flip-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.board-tile.flip-delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* CUANDO LA PALABRA NO ES VALIDA */
+@keyframes row-shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-2px);
+  }
+
+  20% {
+    transform: translateX(4px);
+  }
+
+  30% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  60% {
+    transform: translateX(4px);
+  }
+
+  70% {
+    transform: translateX(-2px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+
+  90% {
+    transform: translateX(-1px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.board-row.shake {
+  animation-name: row-shake;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+/* CUANDO GANAS - REBOTE SUAVE */
+@keyframes win-bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-6px);
+  }
+
+  40% {
+    transform: translateY(0);
+  }
+
+  60% {
+    transform: translateY(-3px);
+  }
+
+  80% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.board-row.win .board-tile {
+  animation-name: win-bounce;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+}
+
+.board-row.win .board-tile:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.board-row.win .board-tile:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.board-row.win .board-tile:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.board-row.win .board-tile:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.board-row.win .board-tile:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+/* FADE PARA MODALES */
+@keyframes modal-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal.fade-in {
+  animation-name: modal-fade-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.modal.fade-out {
+  animation-name: modal-fade-out;
+  animation-duration: 0.2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+/* FADE PARA MENSAJES */
+@keyframes message-in {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.show {
+  animation-name: message-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease;
+}
+
+/* KEY PRESSED */
+.key:active {
+  transform: scale(0.96);
+  transition-property: transform;
+  transition-duration: 0.05s;
+}
+
+/* ACCESIBILIDAD: reduce movimiento manteniendo el feedback de resultado */
+@media (prefers-reduced-motion: reduce) {
+  .board-tile.pop,
+  .board-tile.flip,
+  .board-row.shake,
+  .board-row.win .board-tile,
+  .modal.fade-in,
+  .modal.fade-out,
+  .message.show {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .key:active {
+    transition-duration: 0.01ms;
+  }
+}

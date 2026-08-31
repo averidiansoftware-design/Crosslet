@@ -1,0 +1,291 @@
+/*
+  CROSSLET - layout.css
+  Tablero y responsive
+*/
+
+/* CONTENEDOR PRINCIPAL DEL JUEGO */
+.game-wrapper {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* AREA CENTRAL DONDE ESTA EL BOARD */
+.main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+
+/* TABLERO DE 6x5 */
+.board {
+  width: 100%;
+  max-width: 350px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* CADA FILA DEL TABLERO */
+.board-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+/* CADA CUADRO INDIVIDUAL */
+.board-tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 62px;
+  max-height: 62px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--line);
+  background-color: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ESTADO LLENO */
+.board-tile.filled {
+  border-color: var(--line-strong);
+}
+
+/* COLORES DE RESULTADO */
+.board-tile.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: var(--correct-text);
+}
+
+.board-tile.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: var(--present-text);
+}
+
+.board-tile.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: var(--absent-text);
+}
+
+/* MENSAJE FLOTANTE */
+.message {
+  height: 24px;
+  min-height: 24px;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+/* TECLADO */
+.keyboard {
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  background-color: var(--bg);
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: var(--line);
+  flex-shrink: 0;
+}
+
+.kb-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: clamp(3px, 1vw, 4px);
+  margin-bottom: 6px;
+}
+
+.key {
+  flex: 1;
+  height: clamp(42px, 12vw, 52px);
+  min-width: 0;
+  max-width: 44px;
+  background-color: var(--key-bg);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key.wide {
+  max-width: 62px;
+  min-width: 40px;
+  font-size: clamp(9px, 2.6vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.key.correct {
+  background-color: var(--correct);
+  color: var(--correct-text);
+}
+
+.key.present {
+  background-color: var(--present);
+  color: var(--present-text);
+}
+
+.key.absent {
+  background-color: var(--absent);
+  opacity: 0.6;
+}
+
+/* ENVIAR resaltado cuando la fila actual tiene las 5 letras */
+.key.wide.ready {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+/* RESPONSIVE - TELEFONOS PEQUENOS */
+@media (max-width: 360px) {
+  .board {
+    max-width: 300px;
+    gap: 5px;
+  }
+
+  .board-row {
+    gap: 5px;
+  }
+
+  .board-tile {
+    font-size: 26px;
+    max-width: 56px;
+    max-height: 56px;
+  }
+
+  .key {
+    height: 46px;
+    max-width: 30px;
+    min-width: 0;
+    font-size: 11px;
+  }
+
+  .key.wide {
+    max-width: 52px;
+    min-width: 0;
+  }
+}
+
+/* RESPONSIVE - TELEFONOS GRANDES Y TABLET VERTICAL */
+@media (min-width: 400px) and (max-width: 600px) {
+  .board {
+    max-width: 360px;
+  }
+
+  .board-tile {
+    max-width: 64px;
+    max-height: 64px;
+  }
+}
+
+/* RESPONSIVE - PANTALLA ALTA */
+@media (min-height: 750px) {
+  .main {
+    justify-content: center;
+    padding-top: 24px;
+  }
+
+  .board {
+    gap: 7px;
+  }
+
+  .board-row {
+    gap: 7px;
+  }
+
+  .board-tile {
+    max-width: 62px;
+    max-height: 62px;
+  }
+}
+
+/* RESPONSIVE - PANTALLA MUY ALTA */
+@media (min-height: 900px) {
+  .main {
+    padding-top: 32px;
+  }
+
+  .board {
+    max-width: 380px;
+    gap: 8px;
+  }
+
+  .board-tile {
+    max-width: 66px;
+    max-height: 66px;
+    font-size: 32px;
+  }
+}
+
+/* RESPONSIVE - HORIZONTAL PEQUENO */
+@media (max-height: 600px) and (orientation: landscape) {
+  .main {
+    padding-top: 8px;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .board {
+    max-width: 240px;
+    gap: 4px;
+  }
+
+  .board-tile {
+    max-width: 38px;
+    max-height: 38px;
+    font-size: 18px;
+  }
+
+  .keyboard {
+    padding-bottom: 8px;
+  }
+
+  .key {
+    height: 36px;
+  }
+}
