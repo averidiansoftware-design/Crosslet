@@ -1,1 +1,267 @@
+@font-face {
+  font-family: "Crosslet Sans";
+  src: url("../assets/fonts/CrossletSans.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
 
+/* 
+  CROSSLET - style.css
+  Base system - 100% offline
+  Font: system-ui
+*/
+
+:root {
+  --bg: #fdf8f0;
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --ink-light: #7a756d;
+  --line: #e9e2d5;
+  --line-strong: #c8c0b2;
+  --correct: #6b8f71;
+  --correct-text: #ffffff;
+  --present: #d8b26a;
+  --present-text: #1a1a1a;
+  --absent: #d6d2c7;
+  --absent-text: #6b6b6b;
+  --key-bg: #ede8df;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "Crosslet Sans", "DejaVu Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--line);
+  background-color: var(--bg);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background-color: var(--key-bg);
+}
+
+.menu {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-light);
+  line-height: 1.4;
+  margin-bottom: 32px;
+}
+
+.menu-buttons {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  width: 100%;
+  height: 48px;
+  background-color: var(--ink);
+  color: var(--paper);
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  width: 100%;
+  height: 48px;
+  background-color: transparent;
+  color: var(--ink);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--line-strong);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mini-example {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.tile {
+  width: 52px;
+  height: 52px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--line);
+  background-color: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tile.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: var(--correct-text);
+}
+
+.tile.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: var(--present-text);
+}
+
+.tile.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: var(--absent-text);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(253, 248, 240, 0.92);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--paper);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--line);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.modal-head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-head h2 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Teclado: botones sin borde */
+.key,
+.key:focus,
+.key:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
