@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crosslet — Información</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .info-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .info-content {
+      flex: 1;
+      padding: 20px 20px 40px;
+      overflow-y: auto;
+    }
+    .info-section {
+      margin-bottom: 26px;
+    }
+    .info-section h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 10px;
+    }
+    .info-section p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .info-example {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .info-example .board-tile {
+      width: 36px;
+      height: 36px;
+      max-width: 36px;
+      max-height: 36px;
+      font-size: 16px;
+    }
+    .info-example span {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .info-keys {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .info-key-badge {
+      background-color: var(--key-bg);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body style="overflow-y:auto;">
+  <div class="info-wrapper">
+    <header class="header">
+      <a href="index.html" class="icon-btn" aria-label="Volver">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <div class="logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+        <span>CROSSLET</span>
+      </div>
+      <div style="width:40px;"></div>
+    </header>
+
+    <div class="info-content">
+      <div class="info-section">
+        <h2>Qué es Crosslet</h2>
+        <p>Crosslet es un desafío diario de palabras de cinco letras. Cada día hay una única palabra objetivo, igual para todos, y el juego funciona completamente con conexion</p>
+      </div>
+
+      <div class="info-section">
+        <h2>Cómo jugar</h2>
+        <p>Tienes 6 intentos para adivinar la palabra. Cada intento debe ser una palabra válida de 5 letras. Después de cada intento, el color de las casillas te indica qué tan cerca estás de la solución.</p>
+      </div>
+
+      <div class="info-section">
+        <h2>Significado de los colores</h2>
+        <div class="info-example">
+          <div class="board-tile correct">C</div>
+          <span>Verde: la letra está en la posición correcta.</span>
+        </div>
+        <div class="info-example">
+          <div class="board-tile present">O</div>
+          <span>Amarillo: la letra está en la palabra, pero en otra posición.</span>
+        </div>
+        <div class="info-example">
+          <div class="board-tile absent">X</div>
+          <span>Gris: la letra no está en la palabra.</span>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>El teclado</h2>
+        <p>Puedes escribir con el teclado virtual en pantalla o con el teclado físico de tu dispositivo. Crosslet admite la letra Ñ y normaliza automáticamente las vocales acentuadas (Á, É, Í, Ó, Ú) al escribir.</p>
+        <div class="info-keys">
+          <span class="info-key-badge">ENVIAR confirma tu intento</span>
+          <span class="info-key-badge">Borrar elimina la última letra</span>
+          <span class="info-key-badge">Ñ disponible</span>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>Intentos y estadísticas</h2>
+        <p>Dispones de 6 intentos como máximo por palabra diaria. Crosslet guarda tus estadísticas de partidas jugadas, victorias, racha actual y racha máxima, además de la distribución de tus aciertos por número de intento.</p>
+      </div>
+
+      <div class="info-section">
+        <h2>Funcionamiento online</h2>
+        <p>Crossle, La palabra del día, el diccionario de validación y tu progreso se calculan y guardan localmente en tu dispositivo.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

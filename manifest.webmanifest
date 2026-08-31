@@ -1,0 +1,9 @@
+{
+  "name": "Crosslet — Crucigrama diario",
+  "short_name": "Crosslet",
+  "lang": "es",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fdf8f0",
+  "theme_color": "#1a1a1a"
+}
